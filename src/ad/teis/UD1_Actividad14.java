@@ -42,10 +42,23 @@ public class UD1_Actividad14 {
             contador++;
         }
 
-        int pos = 5;
+        int pos = 11;
         Persona personaRecuperada = random.leerPersona(pos, PERSONA_FILE);
         if (personaRecuperada != null) {
             System.out.println("La persona en la posición: " + pos + " es: " + personaRecuperada);
+        }
+        else{
+             System.out.println("La persona en la posición: " + pos + " es null. Puede que no haya objetos de tipo Persona en esa posición.");
+        }
+        
+        //Aumentar el salario a una persona
+        System.out.println("Salario = " + personaRecuperada.getSalario());
+        float nuevoSalario = random.sumarSalario(pos, PERSONA_FILE, 25);
+        personaRecuperada.setSalario(nuevoSalario);
+        random.escribirPersona(personaRecuperada, PERSONA_FILE);
+        personaRecuperada = random.leerPersona(pos, PERSONA_FILE);
+        if (personaRecuperada != null) {
+            System.out.println("La persona en la posición: " + pos + " tiene un incremento del salario: " + personaRecuperada);
         }
         else{
              System.out.println("La persona en la posición: " + pos + " es null. Puede que no haya objetos de tipo Persona en esa posición.");
