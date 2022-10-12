@@ -13,12 +13,22 @@ public class Persona {
     private String dni;
     private int edad;
     private float salario;
+    private boolean borrado;
 
-    public Persona(long id, String dni, int edad, float salario) {
+    public Persona(long id, String dni, int edad, float salario, boolean borrado) {
         this.id = id;
         this.dni = dni;
         this.edad = edad;
         this.salario = salario;
+        this.borrado = borrado;
+    }
+
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
     }
 
     public long getId() {
@@ -55,7 +65,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", dni=" + dni + ", edad=" + edad + ", salario=" + salario + '}';
+        return "Persona{" + "id=" + id + ", dni=" + dni + ", edad=" + edad + ", salario=" + salario + ", borrado="+borrado+'}';
     }
 
     

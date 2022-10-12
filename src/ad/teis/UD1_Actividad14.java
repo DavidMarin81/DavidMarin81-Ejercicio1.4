@@ -24,16 +24,16 @@ public class UD1_Actividad14 {
     public static void main(String[] args) {
         ArrayList<Persona> personas = new ArrayList<>();
         ArrayList<Persona> personasRecuperadas = new ArrayList<>();
-        Persona personaA = new Persona(1, "12345678A", 18, 20000.65f);
-        Persona personaB = new Persona(2, "12345678B", 12, 30000.65f);
-        Persona personaC = new Persona(3, "12345678C", 22, 40000.65f);
+        Persona personaA = new Persona(1, "12345678A", 18, 20000.65f, false);
+        Persona personaB = new Persona(2, "12345678B", 12, 30000.65f, false);
+        Persona personaC = new Persona(3, "12345678C", 22, 40000.65f, false);
         personas.add(personaA);
         personas.add(personaB);
         personas.add(personaC);
 
         RandomAccessPersistencia random = new RandomAccessPersistencia();
 
-        //  random.escribirPersonas(personas, PERSONA_FILE);
+        //random.escribirPersonas(personas, PERSONA_FILE);
         personasRecuperadas = random.leerTodo(PERSONA_FILE);
 
         int contador = 1;
@@ -42,7 +42,7 @@ public class UD1_Actividad14 {
             contador++;
         }
 
-        int pos = 11;
+        int pos = 5;
         Persona personaRecuperada = random.leerPersona(pos, PERSONA_FILE);
         if (personaRecuperada != null) {
             System.out.println("La persona en la posición: " + pos + " es: " + personaRecuperada);
@@ -63,6 +63,16 @@ public class UD1_Actividad14 {
         else{
              System.out.println("La persona en la posición: " + pos + " es null. Puede que no haya objetos de tipo Persona en esa posición.");
         }
+        
+        random.borrar(5, PERSONA_FILE, true);
+        personaRecuperada = random.leerPersona(pos, PERSONA_FILE);
+        if (personaRecuperada != null) {
+            System.out.println("La persona en la posición: " + pos + " es: " + personaRecuperada);
+        }
+        else{
+             System.out.println("La persona en la posición: " + pos + " es null. Puede que no haya objetos de tipo Persona en esa posición.");
+        }
+        
         
 //        Persona personaZ = new Persona(100, "12345678Z", 23, 10000.5f);
 //       

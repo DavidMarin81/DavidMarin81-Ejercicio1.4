@@ -11,8 +11,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -32,6 +30,7 @@ public class DataIOPersistencia implements IPersistencia {
                 dos.writeUTF(persona.getDni());
                 dos.writeInt(persona.getEdad());
                 dos.writeFloat(persona.getSalario());
+                dos.writeBoolean(persona.isBorrado());
 
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
@@ -53,6 +52,7 @@ public class DataIOPersistencia implements IPersistencia {
         String dniUTF = "";
         int edad = 0;
         float salario = 0;
+        boolean borrado = false;
         Persona persona = null;
 
         try (
@@ -68,8 +68,9 @@ public class DataIOPersistencia implements IPersistencia {
             dniUTF = dis.readUTF();
             edad = dis.readInt();
             salario = dis.readFloat();
+            borrado = dis.readBoolean();
 
-            persona = new Persona(id, sb.toString(), edad, salario);
+            persona = new Persona(id, sb.toString(), edad, salario, borrado);
         } catch (IOException ex) {
             ex.printStackTrace();
             System.out.println("Ha ocurrido una excepción: " + ex.getMessage());
