@@ -212,4 +212,31 @@ public class RandomAccessPersistencia implements IPersistencia {
         }
         return persona;
     }
+    
+    public float sumarSalario(int posicion, String ruta, float incremento) {
+        float nuevoSalario = 0;
+        try (
+                 RandomAccessFile raf = new RandomAccessFile(ruta, "rw");) {
+
+            posicion = posicion * 34 - 4;
+            
+            raf.seek(posicion);
+            
+            float salarioActual = raf.readFloat();
+            System.out.println("Salario Actual " + salarioActual);
+            nuevoSalario = salarioActual + incremento;
+            raf.seek(posicion);
+            raf.writeFloat(nuevoSalario);
+            System.out.println("Nuevo salario: " + nuevoSalario);
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            System.out.println("Se ha producido una excepción: " + ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("Se ha producido una excepción: " + ex.getMessage());
+        }
+        return nuevoSalario;
+    }
+    
 }
