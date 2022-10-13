@@ -24,9 +24,9 @@ public class UD1_Actividad14 {
     public static void main(String[] args) {
         ArrayList<Persona> personas = new ArrayList<>();
         ArrayList<Persona> personasRecuperadas = new ArrayList<>();
-        Persona personaA = new Persona(1, "12345678A", 18, 20000.65f, false);
-        Persona personaB = new Persona(2, "12345678B", 12, 30000.65f, false);
-        Persona personaC = new Persona(3, "12345678C", 22, 40000.65f, false);
+        Persona personaA = new Persona(1, "12345678A", 18, 20000.65f, false, "Nombre 1");
+        Persona personaB = new Persona(2, "12345678B", 12, 30000.65f, false, "Nombre 2");
+        Persona personaC = new Persona(3, "12345678C", 22, 40000.65f, false, "Nombre 3");
         personas.add(personaA);
         personas.add(personaB);
         personas.add(personaC);
@@ -52,9 +52,7 @@ public class UD1_Actividad14 {
         }
         
         //Aumentar el salario a una persona
-        System.out.println("Salario = " + personaRecuperada.getSalario());
-        float nuevoSalario = random.sumarSalario(pos, PERSONA_FILE, 25);
-        personaRecuperada.setSalario(nuevoSalario);
+        random.sumarSalario(pos, PERSONA_FILE, 50.0f);
         random.escribirPersona(personaRecuperada, PERSONA_FILE);
         personaRecuperada = random.leerPersona(pos, PERSONA_FILE);
         if (personaRecuperada != null) {
@@ -64,6 +62,7 @@ public class UD1_Actividad14 {
              System.out.println("La persona en la posición: " + pos + " es null. Puede que no haya objetos de tipo Persona en esa posición.");
         }
         
+        //Borrar a una persona en una posicion
         random.borrar(5, PERSONA_FILE, true);
         personaRecuperada = random.leerPersona(pos, PERSONA_FILE);
         if (personaRecuperada != null) {
