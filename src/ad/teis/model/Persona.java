@@ -14,14 +14,26 @@ public class Persona {
     private int edad;
     private float salario;
     private boolean borrado;
+    private String nombre;
 
-    public Persona(long id, String dni, int edad, float salario, boolean borrado) {
+    public Persona(long id, String dni, int edad, float salario, boolean borrado, String nombre) {
         this.id = id;
         this.dni = dni;
         this.edad = edad;
         this.salario = salario;
         this.borrado = borrado;
+        this.nombre = nombre;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 
     public boolean isBorrado() {
         return borrado;
