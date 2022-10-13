@@ -53,6 +53,7 @@ public class DataIOPersistencia implements IPersistencia {
         int edad = 0;
         float salario = 0;
         boolean borrado = false;
+        String nombre = "";
         Persona persona = null;
 
         try (
@@ -69,8 +70,9 @@ public class DataIOPersistencia implements IPersistencia {
             edad = dis.readInt();
             salario = dis.readFloat();
             borrado = dis.readBoolean();
+            nombre = dis.readUTF();
 
-            persona = new Persona(id, sb.toString(), edad, salario, borrado);
+            persona = new Persona(id, sb.toString(), edad, salario, borrado, nombre);
         } catch (IOException ex) {
             ex.printStackTrace();
             System.out.println("Ha ocurrido una excepción: " + ex.getMessage());
